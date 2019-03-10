@@ -16,5 +16,6 @@
     <string name="password_2">Password</string>
     <string name="create_account">Create Account</string>
     <string name="account_already_login">Already have an account? Login</string>
+    <string name="test_string">test</string>
 
 </resources>

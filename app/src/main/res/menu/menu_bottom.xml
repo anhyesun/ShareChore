@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+
+    <item
+        android:id="@+id/menu_overview"
+        android:icon="@drawable/ic_home_solid"
+        android:title="Overview"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/menu_my_tasks"
+        android:icon="@drawable/ic_tasks_solid"
+        android:title="My Tasks"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/menu_points"
+        android:icon="@drawable/ic_chart_pie_solid"
+        android:title="Points"
+        tools:ignore="HardcodedText" />
+
+
+
+
+
+</menu>

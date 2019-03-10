@@ -32,7 +32,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                login();
+                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(i);
             }
         });
 
@@ -49,11 +50,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //TODO: figure out login logic
-    public void login(){
-        Log.d(TAG, "Login");
-        // for demo: open home screen
-        //Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-    }
+//    //TODO: figure out login logic
+//    public void login(){
+//        //Log.d(TAG, "Login");
+//        // for demo: open home screen
+//        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+//        startActivity(i);
+//    }
 
 }

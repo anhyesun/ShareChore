@@ -18,6 +18,10 @@
         <activity
             android:name="com.example.naoreen.cmdf.SignupActivity">
         </activity>
+        <activity
+            android:name="com.example.naoreen.cmdf.HomeActivity">
+        </activity>
+
     </application>
 
 </manifest>
