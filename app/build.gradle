@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 
 
+def BUTTER_KNIFE_VERSION="8.5.1"
+
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -38,4 +41,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
 }
