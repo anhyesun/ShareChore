@@ -1,14 +1,18 @@
 package com.example.naoreen.cmdf;
 
 
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.ImageSwitcher;
 import android.widget.Toolbar;
 
 import butterknife.BindView;
@@ -52,6 +56,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstantState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+
+
        // BottomNavigationViewHelper.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
