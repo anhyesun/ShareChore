@@ -7,8 +7,12 @@
     <string name="submit">Submit</string>
     <string name="log_in">log in</string>
     <string name="create_an_account"> create new account</string>
-    <string name="description">Description</string>
     <string name="add_task">ADD TASK</string>
-    <string name="member">Member:</string>
+    <string name="member">Member</string>
+    <string name="des">Description</string>
+    <string name="point">Point</string>
+    <string name="duedate">Due Date</string>
+    <string name="status">Status</string>
+    <string name="done">Done</string>
 
 </resources>
