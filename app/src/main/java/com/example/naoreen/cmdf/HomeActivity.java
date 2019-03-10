@@ -57,10 +57,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-//        Drawable mIcon= ContextCompat.getDrawable(this, R.drawable.ic_home_solid);
-//        mIcon.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
-//        ImageSwitcher mImageView = new ImageSwitcher(this);
-//        mImageView.setImageDrawable(mIcon);
 
        // BottomNavigationViewHelper.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
