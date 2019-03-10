@@ -41,8 +41,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 // start sign up activity
-                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
+                Intent i = new Intent(getApplicationContext(), SignupActivity.class);
+                startActivity(i);
+                //startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
 
@@ -51,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
     //TODO: figure out login logic
     public void login(){
         Log.d(TAG, "Login");
+        // for demo: open home screen
+        //Intent i = new Intent(getApplicationContext(), HomeActivity.class);
     }
 
 }
