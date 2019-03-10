@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 
-def BUTTER_KNIFE_VERSION="8.5.1"
+def BUTTER_KNIFE_VERSION = "8.5.1"
 
 
 android {
