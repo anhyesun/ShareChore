@@ -11,7 +11,9 @@ import java.util.Set;
 // Represents a tag having a name
 public class Tag {
   private String name;
+  private String id;
   private Set<Task> tasks;
+  private Set<Member> members;
 
   // MODIFIES: this
   // EFFECTS: creates a Tag with the given name
@@ -48,8 +50,17 @@ public class Tag {
     if (task == null) {
       throw new NullArgumentException("Task is null!");
     } else if (containsTask(task)) {
+      addPointMember(task.getId(id), task);
       tasks.remove(task);
       task.removeTag(this);
+    }
+  }
+
+  public void addPointMember(String id, Task task) {
+    for (Member m : members) {
+      if (m.getId().equals(id)) {
+        m.addPoint(task.getPoint());
+      }
     }
   }
 

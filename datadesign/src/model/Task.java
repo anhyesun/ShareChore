@@ -4,7 +4,7 @@ import model.exceptions.EmptyStringException;
 import model.exceptions.InvalidPointException;
 import model.exceptions.NullArgumentException;
 import parsers.Parser;
-import parsers.TagParser;
+import parsers.TaskParser;
 import parsers.exceptions.ParsingException;
 
 import java.util.*;
@@ -19,6 +19,8 @@ public class Task {
   private DueDate dueDate;
   private int point;
   private Status status;
+  private String id;
+  private Set<Member> members;
 
   // MODIFIES: this
   // EFFECTS: constructs a task with the given description
@@ -36,6 +38,8 @@ public class Task {
     point = 1;
     status = Status.TODO;
     setDescription(description);
+    members = new HashSet<>();
+    id = null;
   }
 
   // MODIFIES: this
@@ -56,6 +60,16 @@ public class Task {
       tags.add(tag);
       tag.addTask(this);
     }
+  }
+
+  public void setId(String id) {
+    this.id = id;
+    Member member = new Member(id);
+    members.add(member);
+  }
+
+  public String getId() {
+    return id;
   }
 
   // MODIFIES: this
@@ -88,10 +102,14 @@ public class Task {
   // EFFECTS: sets the priority of this task
   //   throws NullArgumentException when priority is null
   public void setPoint(int point) throws InvalidPointException {
-      if (point < 0 || point > 4){
+      if (point < 0 || point > 5){
         throw new InvalidPointException();
       }
       this.point = point;
+  }
+
+  public int getPoint() {
+      return point;
   }
 
   // EFFECTS: returns the status of this task
@@ -161,7 +179,7 @@ public class Task {
   // MODIFIES: this
   // EFFECTS: parses the description to extract meta-data (i.e., tags, status, priority and deadline).
   private void parseDescription(String description) {
-    Parser parser = new TagParser();
+    Parser parser = new TaskParser();
     try {
       parser.parse(description, this);
       this.description = parser.getDescription();

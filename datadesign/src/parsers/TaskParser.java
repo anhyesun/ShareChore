@@ -2,21 +2,23 @@ package parsers;
 
 import model.*;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import parsers.exceptions.ParsingException;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 // Represents Task parser
-public class TaskParser {
+public class TaskParser extends Parser {
 
   // EFFECTS: iterates over every JSONObject in the JSONArray represented by the input
   // string and parses it as a task; each parsed task is added to the list of tasks.
   // Any task that cannot be parsed due to malformed JSON data is not added to the
   // list of tasks.
   // Note: input is a string representation of a JSONArray
-  public List<Task> parse(String input) {
+  public List<Task> parse(String input) throws JSONException {
     List<Task> tasks = new ArrayList<>();
     JSONArray tasksArray = new JSONArray(input);
 
@@ -29,8 +31,9 @@ public class TaskParser {
           Task t = new Task(description);
           t = parseTags(tagJson, t);
           t = parseDueDate(taskJson, t);
-          t = parsePriority(taskJson, t);
+          t = parsePoint(taskJson, t);
           t = parseStatus(taskJson, t);
+          t = parseMember(taskJson, t);
           tasks.add(t);
         }
       }
@@ -39,15 +42,24 @@ public class TaskParser {
     return tasks;   // stub
   }
 
-  private boolean isValid(JSONObject taskJson) {
-    if (isPriorityKey(taskJson) && isDueDateKey(taskJson)
+  private boolean isValid(JSONObject taskJson) throws JSONException {
+    if (isPointKey(taskJson) && isDueDateKey(taskJson)
             && isStatusKey(taskJson)) {
       return true;
     }
     return false;
   }
 
-  private Task parseTags(JSONArray tagJson, Task t) {
+    private boolean isPointKey(JSONObject taskJson) throws JSONException {
+      String pointJson = taskJson.getString("point");
+      if (pointJson.equals("1") || pointJson.equals("2")
+              || pointJson.equals("3") || pointJson.equals("4") || pointJson.equals("5")) {
+                return true;
+      }
+      return false;
+    }
+
+    private Task parseTags(JSONArray tagJson, Task t) throws JSONException {
     for (Object obj : tagJson) {
       JSONObject tag = (JSONObject) obj;
       t.addTag(new Tag(tag.getString("name")));
@@ -55,7 +67,7 @@ public class TaskParser {
     return t;
   }
 
-  private Task parseDueDate(JSONObject taskJson, Task t) {
+  private Task parseDueDate(JSONObject taskJson, Task t) throws JSONException {
     if (taskJson.isNull("due-date")) {
       t.setDueDate(null);
     } else {
@@ -74,18 +86,35 @@ public class TaskParser {
     return t;
   }
 
-  private Task parsePriority(JSONObject taskJson, Task t) {
-    JSONObject priorityJson = taskJson.getJSONObject("priority");
-    boolean important = priorityJson.getBoolean("important");
-    boolean urgent = priorityJson.getBoolean("urgent");
-    Priority p = new Priority();
-    p.setImportant(important);
-    p.setUrgent(urgent);
-    t.setPriority(p);
+  private Task parseMember(JSONObject taskJson, Task t) {
+    String memberJson = taskJson.getString("member");
+    if (memberJson == null) {
+      t.setId("not assigned");
+    } else {
+      t.setId(memberJson);
+    }
+
     return t;
   }
 
-  private Task parseStatus(JSONObject taskJson, Task t) {
+  private Task parsePoint(JSONObject taskJson, Task t) throws JSONException {
+    String pointJson = taskJson.getString("point");
+    if (pointJson.equals("1")) {
+        t.setPoint(1);
+    } else if (pointJson.equals("2")) {
+        t.setPoint(2);
+    } else if (pointJson.equals("3")) {
+        t.setPoint(3);
+    } else if (pointJson.equals("4")) {
+        t.setPoint(4);
+    } else {
+        t.setPoint(5);
+    }
+
+      return t;
+  }
+
+  private Task parseStatus(JSONObject taskJson, Task t) throws JSONException {
     String statusJson = taskJson.getString("status");
     if (statusJson.equals("IN_PROGRESS")) {
       t.setStatus(Status.IN_PROGRESS);
@@ -119,7 +148,7 @@ public class TaskParser {
     return true;
   }
 
-  private boolean isDueDateKey(JSONObject taskJson) {
+  private boolean isDueDateKey(JSONObject taskJson) throws JSONException {
     if (taskJson.isNull("due-date")) {
       return true;
     }
@@ -132,15 +161,8 @@ public class TaskParser {
     return false;
   }
 
-  private boolean isPriorityKey(JSONObject taskJson) {
-    JSONObject priorityJson = taskJson.getJSONObject("priority");
-    if (!priorityJson.has("urgent") || !priorityJson.has("important")) {
-      return false;
-    }
-    return true;
-  }
 
-  private boolean isStatusKey(JSONObject taskJson) {
+  private boolean isStatusKey(JSONObject taskJson) throws JSONException {
     String statusJson = taskJson.getString("status");
     if (statusJson.equals("IN_PROGRESS") || statusJson.equals("DONE")
             || statusJson.equals("TODO") || statusJson.equals("UP_NEXT")) {
@@ -149,4 +171,8 @@ public class TaskParser {
     return false;
   }
 
+    @Override
+    public void parse(String input, Task task) throws ParsingException {
+
+    }
 }

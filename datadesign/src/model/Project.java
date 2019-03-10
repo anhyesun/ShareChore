@@ -11,6 +11,8 @@ public class Project {
   private Task task;
   private String description;
   private List<Task> tasks;
+  private String id;
+  private Set<Member> members;
 
 
   // REQUIRES: description is non-empty
@@ -24,6 +26,7 @@ public class Project {
     this.description = description;
     this.task = new Task(description);
     this.tasks = new ArrayList<>();
+    this.members = new HashSet<>();
   }
 
   // REQUIRES: task != null
@@ -47,7 +50,16 @@ public class Project {
       throw new NullArgumentException("Task must be none empty");
     }
     this.task = task;
+    addPointMember(id, task);
     tasks.remove(task);
+  }
+
+  public void addPointMember(String id, Task task) {
+    for (Member m : members) {
+      if (m.getId().equals(id)) {
+        m.addPoint(task.getPoint());
+      }
+    }
   }
 
   // EFFECTS: returns the description of this project

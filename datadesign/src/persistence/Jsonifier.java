@@ -2,10 +2,10 @@ package persistence;
 
 
 import model.DueDate;
-import model.Priority;
 import model.Tag;
 import model.Task;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
@@ -15,22 +15,28 @@ import java.util.List;
 public class Jsonifier {
 
   // EFFECTS: returns JSON representation of tag
-  public static JSONObject tagToJson(Tag tag) {
+  public static JSONObject tagToJson(Tag tag) throws JSONException {
     JSONObject tagJson = new JSONObject();
     tagJson.put("name", tag.getName());
     return tagJson;
   }
 
+  // EFFECTS: returns JSON representation of Member
+  public static JSONObject memberToJson(Task task) throws JSONException {
+    JSONObject memberJson = new JSONObject();
+
+    memberJson.put("id", task.getId());
+    return memberJson;
+  }
+
   // EFFECTS: returns JSON representation of priority
-  public static JSONObject priorityToJson(Priority priority) {
-    JSONObject priorityJson = new JSONObject();
-    priorityJson.put("important", priority.isImportant());
-    priorityJson.put("urgent", priority.isUrgent());
-    return priorityJson;
+  public static JSONObject pointToJson(int points) {
+    JSONObject pointToJson = new JSONObject();
+    return pointToJson;
   }
 
   // EFFECTS: returns JSON respresentation of dueDate
-  public static JSONObject dueDateToJson(DueDate dueDate) {
+  public static JSONObject dueDateToJson(DueDate dueDate) throws JSONException {
     JSONObject dueDateJson = new JSONObject();
 
     if (dueDate == null) {
@@ -53,7 +59,7 @@ public class Jsonifier {
   }
 
   // EFFECTS: returns JSON representation of task
-  public static JSONObject taskToJson(Task task) {
+  public static JSONObject taskToJson(Task task) throws JSONException {
     JSONObject taskJson = new JSONObject();
     JSONArray tags = new JSONArray();
     for (Tag t : task.getTags()) {
@@ -66,8 +72,9 @@ public class Jsonifier {
     } else {
       taskJson.put("due-date", dueDateToJson(task.getDueDate()));
     }
-    taskJson.put("priority", priorityToJson(task.getPriority()));
+    taskJson.put("points", pointToJson(task.getPoint()));
     taskJson.put("status", task.getStatus());
+    taskJson.put("member", task.getId());
     return taskJson;
   }
 

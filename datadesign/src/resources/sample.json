@@ -8,6 +8,7 @@
       "minute":59
     },
     "description":"Throw food garbage. ",
+    "member": "Alice",
     "point":
       "1",
     "status":"IN_PROGRESS",
@@ -20,6 +21,7 @@
   {
     "due-date":null,
     "description":"Sweep the floor. ",
+    "member": "Alice",
     "point":
     "3",
     "status":"UP_NEXT",
@@ -32,6 +34,7 @@
   {
     "due-date":null,
     "description":"Stack the dishwasher ",
+    "member": null,
     "point":
     "1",
     "status":"TODO",
@@ -50,6 +53,7 @@
       "minute":59
     },
     "description":"Empty the bin. ",
+    "member": "Sarah",
     "point":
     "3",
     "status":"TODO",
@@ -71,6 +75,7 @@
       "minute":10
     },
     "description":"Clean the mirror. ",
+    "member": "Sarah",
     "point":
     "4",
     "status":"TODO",
@@ -92,6 +97,7 @@
       "minute":10
     },
     "description":"Empty the dish washer. ",
+    "member": "Sarah",
     "point":
     "5",
     "status":"TODO",

@@ -10,7 +10,7 @@ public class Points {
   }
 
   public void Points(int point) throws InvalidPointException {
-    if (point < 0 || point > 4){
+    if (point < 0 || point > 5){
       throw new InvalidPointException();
     }
     this.point = point;
