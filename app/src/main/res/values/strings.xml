@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">cmdf</string>
+    <string name="button_2">Button 2</string>
+    <string name="password">password</string>
+    <string name="user">username</string>
+    <string name="button_1">Button 1</string>
+    <string name="submit">Submit</string>
+    <string name="log_in">log in</string>
+    <string name="create_an_account"> create new account</string>
+
 </resources>
