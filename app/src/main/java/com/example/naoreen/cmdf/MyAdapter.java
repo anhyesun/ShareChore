@@ -23,6 +23,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         MyViewHolder(LinearLayout v){
             super(v);
             textView = v.findViewById(R.id.task_description);
+
         }
     }
 
