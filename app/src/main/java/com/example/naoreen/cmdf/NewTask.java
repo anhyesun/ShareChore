@@ -21,8 +21,8 @@ public class NewTask extends AppCompatActivity implements AdapterView.OnItemSele
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
         members = new ArrayList<>();
-        members.add("Alice");
-        members.add("Bob");
+        members.add("Allie");
+        members.add("Sarah");
 
 
         //TODO: display members -- Parse JSON file to get list of users
