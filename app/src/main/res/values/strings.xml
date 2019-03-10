@@ -10,5 +10,11 @@
     <string name="description">Description</string>
     <string name="add_task">ADD TASK</string>
     <string name="member">Member:</string>
+    <string name="name">Name</string>
+    <string name="create_new_account">create new account</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password_2">Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="account_already_login">Already have an account? Login</string>
 
 </resources>
