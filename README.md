@@ -1,4 +1,5 @@
 # ShareChore
+Hackathon Project 🏠from cmd-f 2019 
 ShareChore is an Android app, a “Housework Management Application” that allows users to organize chores.
 
 I've developed this app in cmd-f 2019 with a team of four. 
