@@ -8,6 +8,8 @@ I've developed this app in cmd-f 2019 with a team of four.
 Successfully submitted and presented this project within 24 hours. 
 https://devpost.com/software/cmd-f-5sbwcx
 
+![Project_Image](https://github.com/anhyesun/ShareChore/blob/master/shareChore.png)
+
 ## Inspiration
 Conflicts with roommates over shared chores.
 
